@@ -21,7 +21,7 @@ fruits_to_show = my_fruit_list.loc[fruits_selected]
 #display the table on page
 streamlit.dataframe(fruits_to_show)
 
-#New Section to display fruityvice api response
+#new Section to display fruityvice api response
 streamlit.header("Fruityvice Fruit Advice!")
 fruit_choice = streamlit.text_input('What fruit would you like information about?','Kiwi')
 streamlit.write('The user entered ', fruit_choice)
@@ -32,7 +32,7 @@ fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_c
 
 #parses json 
 fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
-# displays the data in a table on page
+#displays the data in a table on page
 streamlit.dataframe(fruityvice_normalized)
 
 import snowflake.connector
@@ -44,5 +44,6 @@ my_data_rows = my_cur.fetchall()
 streamlit.header("The fruit load list contains:")
 streamlit.dataframe(my_data_rows)
 
+#allows user to add fruit to the list
 add_my_fruit = streamlit.text_input('What fruit would you like to add?','jackfruit')
 streamlit.write('Thanks for adding ', add_my_fruit)
